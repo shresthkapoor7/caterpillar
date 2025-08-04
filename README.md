@@ -143,4 +143,4 @@ This is a local development setup. Feel free to modify the code and suggest impr
 
 ---
 
-MIT © [Shresth Kapoor](https://github.com/shresthkapoor7)
+[MIT](LICENSE) © [Shresth Kapoor](https://github.com/shresthkapoor7)
