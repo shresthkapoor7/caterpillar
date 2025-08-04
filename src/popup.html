@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Tracker</title>
+  <style>
+    body {
+      width: 400px;
+      height: 500px;
+      margin: 0;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: #1a1a1a;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .test-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .test-btn {
+      padding: 12px;
+      background: #f59e0b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .test-btn:hover {
+      background: #d97706;
+    }
+
+    .add-btn {
+      width: 100%;
+      padding: 12px;
+      background: #4F46E5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 20px;
+    }
+
+        .add-btn:hover {
+      background: #4338CA;
+    }
+
+    .check-updates {
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .check-btn {
+      flex: 1;
+      padding: 12px;
+      background: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .check-btn:hover:not(:disabled) {
+      background: #16a34a;
+    }
+
+    .check-btn:disabled {
+      background: #666;
+      cursor: not-allowed;
+    }
+
+    .mark-all-read-btn {
+      flex: 1;
+      padding: 12px;
+      background: #6366f1;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .mark-all-read-btn:hover:not(:disabled) {
+      background: #4f46e5;
+    }
+
+    .mark-all-read-btn:disabled {
+      background: #666;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    .websites-list {
+      max-height: 300px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .website-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      background: #2a2a2a;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #444;
+      transition: all 0.2s ease;
+    }
+
+    .website-item:hover {
+      background: #3a3a3a;
+      border-color: #666;
+      transform: translateY(-1px);
+    }
+
+    .website-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .website-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .website-url {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+        .website-meta {
+      font-size: 11px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .updated-badge {
+      background: #22c55e;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .website-actions {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .mark-read-btn {
+      background: transparent;
+      color: #888;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.2s;
+    }
+
+    .mark-read-btn:hover {
+      color: #6366f1;
+    }
+
+    .remove-btn {
+      background: transparent;
+      color: #888;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.2s;
+    }
+
+    .remove-btn:hover {
+      color: #ef4444;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      padding: 32px 16px;
+    }
+
+    .footer {
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid #444;
+      font-size: 11px;
+      color: #666;
+      margin-top: auto;
+    }
+
+    .footer a {
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: #f59e0b;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Caterpillar 🐛</h1>
+  </div>
+
+  <button class="add-btn" id="addWebsiteBtn">+ Add Current Website</button>
+
+  <div class="check-updates" id="checkUpdatesSection" style="display: none;">
+    <button class="check-btn" id="checkUpdatesBtn">Check for Updates</button>
+    <button class="mark-all-read-btn" id="markAllReadBtn">Mark All as Read</button>
+  </div>
+
+  <div class="websites-list" id="websitesList">
+    <div class="empty-state">No websites tracked yet. Add a website to start monitoring changes.</div>
+  </div>
+
+  <div class="footer">
+    Made by <a href="https://github.com/shresthkapoor7" target="_blank">Shresth Kapoor</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

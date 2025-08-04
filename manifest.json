@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Caterpillar 🐛",
+  "version": "1.0.0",
+  "description": "Check for updates on your favorite websites",
+  "permissions": [
+    "storage",
+    "alarms",
+    "activeTab",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://static.vecteezy.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "public/icon.png",
+      "32": "public/icon.png",
+      "48": "public/icon.png",
+      "128": "public/icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"]
+    }
+  ],
+  "icons": {
+    "16": "public/icon.png",
+    "32": "public/icon.png",
+    "48": "public/icon.png",
+    "128": "public/icon.png"
+  }
+}
