@@ -141,10 +141,6 @@ Until the extension is published to the Chrome Web Store:
 
 This is a local development setup. Feel free to modify the code and suggest improvements!
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ---
 
-Made with by [Shresth Kapoor](https://github.com/shresthkapoor7)
+MIT © [Shresth Kapoor](https://github.com/shresthkapoor7)
